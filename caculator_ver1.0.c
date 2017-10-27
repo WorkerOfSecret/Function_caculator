@@ -22,9 +22,11 @@ int main()
     char *point;
     int i;
  
-    printf("\n" BLUE "\t\tWHELCOME TO CACULATOR\n");
+    system("clear");
+    printf("" BLUE "\t\tWHELCOME TO CACULATOR\n");
     printf("\t\tPLS DO YOUR CACULATION:\n\n"RESET);
-    
+    printf(">>>  ");  
+   
     scanf("%lf",&ans);
  
     
@@ -54,6 +56,7 @@ int main()
                 printf(RED"\nERROR: THERE IS NO SUCH FUNCTION\n");
                 printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
                 strcpy(n_num, "no");
+                printf(">>>  ");
             }  
          
             f_num = atof(n_num);
@@ -105,14 +108,16 @@ int main()
                 }   
              
                 if(type != 'q')  
-                    printf(YELLOW">>> %lf\n\n"RESET, ans);
+                    printf(YELLOW"\t\t = %lf\n\n"RESET, ans);
                 f_num = 0;   
+                printf(">>>  ");
             }
         }
         else
         {
             printf(RED "\nERROR: THERE IS NO SUCH OPERATOR\n");
             printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
+            printf(">>>  ");
         }
     }
    
