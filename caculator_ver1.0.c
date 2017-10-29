@@ -19,7 +19,6 @@ int main()
     char n_num[10], o_num[10];
     double ans, f_num;
     char type;
-    char *point;
     int i;
  
     system("clear");
