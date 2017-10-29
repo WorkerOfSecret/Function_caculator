@@ -50,6 +50,10 @@ int main()
                     strcat(n_num, &o_num[i]);
                 }
             }
+            else if (o_num[0] == 'a')
+            {
+                f_num = ans;
+            }
             else
             {
                 printf(RED"\nERROR: THERE IS NO SUCH FUNCTION\n");
@@ -58,7 +62,8 @@ int main()
                 printf(">>>  ");
             }  
          
-            f_num = atof(n_num);
+            if (o_num[0] != 'a')
+                f_num = atof(n_num);
          
             if (f_num)
             {
