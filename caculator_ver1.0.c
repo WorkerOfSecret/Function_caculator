@@ -19,7 +19,7 @@ int main()
     char n_num[10], o_num[10];
     double ans, f_num;
     char type;
-    int i;
+    int i, u;
  
     system("clear");
     printf("" BLUE "\t\tWHELCOME TO CACULATOR\n");
@@ -41,7 +41,7 @@ int main()
             {
                 strcpy(n_num, o_num); 
             }
-            else if (o_num[0] == 's' || o_num[0] == 'c' || o_num[0] == 't' || o_num[0] == 'l' || o_num[0] == 'q')
+            else if (o_num[0] == 's' || o_num[0] == 'c' || o_num[0] == 't' || o_num[0] == '!' || o_num[0] == 'l' || o_num[0] == 'q')
             {  
                 strcpy(n_num, &o_num[1]);
               
@@ -73,20 +73,27 @@ int main()
                     switch(o_num[0])
                     {
                         case 's':
-                          f_num = sin(f_num*PI/180);
-                          break;
+                            f_num = sin(f_num*PI/180);
+                            break;
                      
                         case 'c':
-                          f_num = cos(f_num*PI/180);
-                          break;
+                            f_num = cos(f_num*PI/180);
+                            break;
                       
                         case 't':
-                          f_num = tan(f_num*PI/180);
-                          break;
+                            f_num = tan(f_num*PI/180);
+                            break;
                      
+                        case '!':
+                            for (i = 1, u = f_num; i < u; i++)
+                            {
+                                f_num *= i;
+                            }
+                            break;
+                       
                         case 'l':
-                          f_num = log(f_num);
-                          break;
+                            f_num = log(f_num);
+                            break;
                     }
                 }
              
