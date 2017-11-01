@@ -16,7 +16,7 @@
 
 int main()
 {   
-    char what_ever, exit;
+    char what_ever;
     char n_num[10], o_num[10];
     double ans, f_num;
     char type;
