@@ -22,8 +22,9 @@ int main()
     int i, u;
  
     system("clear");
-    printf("" BLUE "\t\tWHELCOME TO CACULATOR\n");
-    printf("\t\tPLS DO YOUR CACULATION:\n\n"RESET);
+    printf("" BLUE "\t\t    WHELCOME TO CACULATOR\n");
+    printf("\t\t    PLS DO YOUR CACULATION:\n");
+    printf("\t\t( USE qq TO EXIT THE PROGRAM )\n\n"RESET);
     printf(">>>  ");  
    
     scanf("%lf",&ans);
@@ -35,7 +36,7 @@ int main()
         scanf("%s", o_num); 
         getchar();   
      
-        if (type == '+' || type == '-' || type == '*' || type == '/' || type == 'q')
+        if (type == '+' || type == '-' || type == '*' || type == '/' || type == '^' || type == 'q')
         {  
             if (atof(&o_num[0]))
             {
@@ -101,20 +102,24 @@ int main()
                 switch(type)
                 {      
                     case '+':
-                      ans += f_num;        
-                      break;
+                        ans += f_num;        
+                        break;
                  
                     case '-':
-                      ans -= f_num;
-                      break; 
+                        ans -= f_num;
+                        break; 
                  
                     case '*': 
-                      ans *= f_num;
-                      break;
+                        ans *= f_num;
+                        break;
                  
                     case '/': 
-                      ans /= f_num;
-                      break; 
+                        ans /= f_num;
+                        break; 
+                  
+                    case '^':
+                        ans = powl(ans, f_num);
+                        break;
                  
                 }   
              
@@ -131,7 +136,5 @@ int main()
             printf(">>>  ");
         }
     }
-   
     return 0;
- 
 }
