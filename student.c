@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 
 // ANSI COLOUR
 #define GREEN   "\x1b[32m"
@@ -17,12 +19,15 @@ void main()
 {
     struct person student[5];
     int i;
-    FILE fr;
+    FILE *fr;
+    
+    system("clear");
     printf (GREEN"\t\tInput student information: Name ID Phone\n"RESET);
     
-   /* if (fr = fopen("student_data.txt","r") == NULL);
-        fr = fopen("student_data.txt","w");
-   */ 
+    if ((fr = fopen("student_data.txt","r")) == NULL);
+        printf("creating file\n");
+        fr = fopen("student_data.txt","w+");
+    
     for (i=0; i < 5; i++)
     {
         printf(">>> ");

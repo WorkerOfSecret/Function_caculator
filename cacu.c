@@ -26,17 +26,17 @@ int main()
   
     while(1)
     { 
-    printf(BLUE"DO YOU WANT TO CACULATE: "RESET);
-    scanf("%c",&what_ever);
-    getchar();
+        printf(BLUE"DO YOU WANT TO CACULATE: "RESET);
+        scanf("%c",&what_ever);
+        getchar();
       
         if(what_ever == 'n')
             for(u=0;u<=10;u++)
             {
                 printf("\nI don't want to do any caculation HAHAHAHA\n\n");
-                sleep(1);
+                sleep(0.5);
             }
-        if(what_ever == 'y')
+        else if(what_ever == 'y')
         {
             printf("" BLUE "\t\tWHELCOME TO CACULATOR\n");
             printf("\t\tPLS DO YOUR CACULATION:\n\n"RESET);
@@ -56,59 +56,59 @@ int main()
                         strcpy(n_num, o_num); 
                     }
                     else if (o_num[0] == 's' || o_num[0] == 'c' || o_num[0] == 't' || o_num[0] == '!' || o_num[0] == 'l' || o_num[0] == 'q')
-                        {  
-                            strcpy(n_num, &o_num[1]);
-                     
-                            for(i = 2; i < (strlen(o_num) - 1); i++)
-                            {   
-                                strcat(n_num, &o_num[i]);
+                    {  
+                        strcpy(n_num, &o_num[1]);
+                        for(i = 2; i < (strlen(o_num) - 1); i++)
+                        {   
+                            strcat(n_num, &o_num[i]);
+                        }
+                    }
+                    else if (o_num[0] == 'a')
+                    {
+                        f_num = ans;
+                    }
+                    else
+                    {
+                        // DEBUG
+                        printf(RED"\nERROR: THERE IS NO SUCH FUNCTION\n");
+                        printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
+                        strcpy(n_num, "no");
+                        printf(">>>  ");
+                    }  
+                    
+                    if (o_num[0] != 'a')
+                        f_num = atof(n_num);
+                    
+                    if (f_num)
+                    {
+                        /* 三角関数 */
+                        if (!atof(&o_num[0]))
+                        {   
+                            switch(o_num[0])
+                            {
+                                case 's':
+                                    f_num = sin(f_num*PI/180);
+                                    break;
+                             
+                                case 'c':
+                                    f_num = cos(f_num*PI/180);
+                                    break;
+                               
+                                case 't':
+                                    f_num = tan(f_num*PI/180);
+                                    break;
+                             
+                                case '!':
+                                    for (i = 1, u = f_num; i < u; i++)
+                                    {
+                                        f_num *= i;
+                                    }
+                                    break;
+                             
+                                case 'l':
+                                    f_num = log(f_num);
+                                    break;
                             }
-                        }
-                        else if (o_num[0] == 'a')
-                        {
-                            f_num = ans;
-                        }
-                        else
-                        {
-                            // DEBUG
-                            printf(RED"\nERROR: THERE IS NO SUCH FUNCTION\n");
-                            printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
-                            strcpy(n_num, "no");
-                            printf(">>>  ");
-                        }  
-                     
-                        if (o_num[0] != 'a')
-                            f_num = atof(n_num);
-                     
-                        if (f_num)
-                        {
-                            /* 三角関数 */
-                            if (!atof(&o_num[0]))
-                            {   
-                                switch(o_num[0])
-                                {
-                                    case 's':
-                                        f_num = sin(f_num*PI/180);
-                                break;
-                         
-                            case 'c':
-                                f_num = cos(f_num*PI/180);
-                                break;
-                         
-                            case 't':
-                                f_num = tan(f_num*PI/180);
-                                break;
-                         
-                            case '!':
-                                for (i = 1, u = f_num; i < u; i++)
-                                {
-                                    f_num *= i;
-                                }
-                                break;
-                         
-                            case 'l':
-                                f_num = log(f_num);
-                                break;
                         }
                     }
                  
@@ -138,18 +138,18 @@ int main()
                     f_num = 0;   
                     printf(">>>  ");
                 }
-            }
-            else
-            {
-                //DEBUG
-                printf(RED "\nERROR: THERE IS NO SUCH OPERATOR\n");
-                printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
-                printf(">>>  ");
+             
+                else
+                {
+                    //DEBUG
+                    printf(RED "\nERROR: THERE IS NO SUCH OPERATOR\n");
+                    printf("PLEASE INPUT ONE MORE TIME\n\n"RESET);
+                    printf(">>>  ");
+                }
             }
         }
-    }
-    // EXIT
-    if (what_ever == 'b')
-        return 0;
+        // EXIT
+        if (what_ever == 'b')
+            return 0;
     }
 }
