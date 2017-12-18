@@ -10,14 +10,14 @@
 
 struct person 
 {
-    int id;
     char name[30];
+    int id;
     char phone[20];
-};
+}student[5];
 
 void main()
 {
-    struct person student[5];
+    //struct person student[5];
     int i;
     FILE *fr;
     
@@ -33,7 +33,7 @@ void main()
         printf(">>> ");
         scanf("%s %d %s", student[i].name, &student[i].id, student[i].phone);
         getchar();
-        fprintf(fr, "%s %d %s", student[i].name, &student[i].id, student[i].phone);
+        fprintf(fr, "%s %d %s", student[i].name, student[i].id, student[i].phone);
     }
     
     printf("Student information: \n");
