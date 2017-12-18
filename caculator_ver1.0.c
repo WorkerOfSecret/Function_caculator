@@ -17,7 +17,7 @@
 int main()
 {   
     char n_num[10], o_num[10];
-    double ans, f_num;
+    double ans, full_num;
     char type;
     int i, u;
  
@@ -53,7 +53,7 @@ int main()
             }
             else if (o_num[0] == 'a')
             {
-                f_num = ans;
+                full_num = ans;
             }
             else
             {
@@ -64,9 +64,9 @@ int main()
             }  
          
             if (o_num[0] != 'a')
-                f_num = atof(n_num);
+                full_num = atof(n_num);
          
-            if (f_num)
+            if (full_num)
             {
                 /* 三角関数 */
                 if (!atof(&o_num[0]))
@@ -74,26 +74,26 @@ int main()
                     switch(o_num[0])
                     {
                         case 's':
-                            f_num = sin(f_num*PI/180);
+                            full_num = sin(full_num*PI/180);
                             break;
                      
                         case 'c':
-                            f_num = cos(f_num*PI/180);
+                            full_num = cos(full_num*PI/180);
                             break;
                       
                         case 't':
-                            f_num = tan(f_num*PI/180);
+                            full_num = tan(full_num*PI/180);
                             break;
                      
                         case '!':
-                            for (i = 1, u = f_num; i < u; i++)
+                            for (i = 1, u = full_num; i < u; i++)
                             {
-                                f_num *= i;
+                                full_num *= i;
                             }
                             break;
                        
                         case 'l':
-                            f_num = log(f_num);
+                            full_num = log(full_num);
                             break;
                     }
                 }
@@ -102,30 +102,30 @@ int main()
                 switch(type)
                 {      
                     case '+':
-                        ans += f_num;        
+                        ans += full_num;        
                         break;
                  
                     case '-':
-                        ans -= f_num;
+                        ans -= full_num;
                         break; 
                  
                     case '*': 
-                        ans *= f_num;
+                        ans *= full_num;
                         break;
                  
                     case '/': 
-                        ans /= f_num;
+                        ans /= full_num;
                         break; 
                   
                     case '^':
-                        ans = powl(ans, f_num);
+                        ans = powl(ans, full_num);
                         break;
                  
                 }   
              
                 if(type != 'q')  
                     printf(YELLOW"\t\t = %lf\n\n"RESET, ans);
-                f_num = 0;   
+                full_num = 0;   
                 printf(">>>  ");
             }
         }
