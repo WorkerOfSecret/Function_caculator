@@ -1,51 +1,86 @@
 import sys
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 import numpy as np
 
 rows = int(sys.argv[1])
-
-def sample(x1, x2, x3):
-    x1 = (10.0 - x2 - x3)/5.0
-    x2 = (12.0 - x1 - x3)/4.0
-    x3 = ( 13.0 - 2.0*x1 - x2)/3.0
-    return x1, x2, x3
-
-def sample1():
-    x1 = x2 = x3 = 10.0
-    list1 = []
-    list2 = []
-    list3 = []
-
-    for i in range(20):
-        list1.append(x1)
-        list2.append(x2)
-        list3.append(x3)
-
-        x1, x2, x3 = sample(x1, x2, x3)
-    
-    pyplot.plot(list1, 'blue', list2, 'red', list3, 'green')
-    pyplot.show()
-
-def get_covariance(arrays):
-    for row_array in arrays:
-        for col_vari in len(row_array):
-            pass
+time_loop = int(sys.argv[2])
 
 def get_A_arrays():
-    print ("Input A arrays:\n")
+    print ("Input A arrays:")
     list = []
     for num in range(rows):
         list.append(map(float,raw_input().split(' ')))
     return list
 
+
 def get_b_arrays():
     list = []
-    print("Input b arrays:\n")
+    print("Input b arrays:")
     for vari in range(rows):
         list.append(input()) 
     return list
 
+
+def split_A_arrays(A):
+    up = np.zeros((rows, rows))
+    low = A.copy()
+
+    for row in range(len(A_arrays)):
+        up[row, (row+1):], low[row, (row+1):] = low[row, (row+1):], 0
+
+    return up, low
+
+
+def gauss_seidel(b, upper, lower, var):
+    T = np.matmul(np.linalg.inv(lower), upper)
+    C = np.matmul(np.linalg.inv(lower), b)
+    return np.matmul(-T, var) + C
+
+
+def make_plot_list():
+    list = []
+    for time in range(rows):
+        list.append([]) 
+    return list
+
+
+def add_val_to_plot(list, var):
+    for row in range(rows):
+        list[row].append(var[row,0])
+
+
+def graph(p_list):
+    for list in p_list:
+        plt.plot(list)
+    plt.show()
+
+
+def diagonally_dominant_matrix(A):
+    for order, row in enumerate(A):
+        if (abs(A[order, order]) < (sum([abs(val) for val in row]) - abs(A[order, order]))):
+            return False 
+    return True
+
+
+def convergence_cond(A):
+    if (False not in (A == A.T[0])) or diagonally_dominant_matrix(A):
+        plt.title('Convergence')
+    else:
+        plt.title('Divergence')
+
+
 if __name__ == '__main__':
     A_arrays = np.array(get_A_arrays())
-    b_arrays = np.array(get_b_arrays())
-    variable = np.zeros((rows,1))
+    b_arrays = np.array(get_b_arrays()).reshape(rows,1)
+    variable = np.ones((rows,1))
+    upper_A, lower_A = split_A_arrays(A_arrays)
+    plot_list = make_plot_list()
+
+    print A_arrays.T
+
+    for time in range(time_loop):
+        variable = gauss_seidel(b_arrays, upper_A, lower_A, variable)
+        add_val_to_plot(plot_list, variable)
+
+    convergence_cond(A_arrays)
+    graph(plot_list)
