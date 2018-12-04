@@ -5,10 +5,10 @@ def df0(x):
     return 2*x - 3
 
 def f1(x):
-    return x**3 + x**2 - x + 2
+    return x**3 + 2*x**2 - 2*x + 3
 
 def df1(x):
-    return 3*x**2 + 2*x - 1 
+    return 3*x**2 + 4*x - 2 
 
 def f2(x):
     return x**2 + 4*x + 4
